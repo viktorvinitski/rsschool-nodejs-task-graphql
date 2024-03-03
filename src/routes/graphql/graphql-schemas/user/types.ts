@@ -59,6 +59,7 @@ export const UserType: GraphQLObjectType<UserSchemaType, ContextType> =
             const authors = context.dataloaders.userDataLoader.loadMany(usersIds);
             return authors;
           }
+          return [];
         },
       },
 
@@ -70,6 +71,7 @@ export const UserType: GraphQLObjectType<UserSchemaType, ContextType> =
             const subscribers = context.dataloaders.userDataLoader.loadMany(usersIds);
             return subscribers;
           }
+          return [];
         },
       },
     }),
