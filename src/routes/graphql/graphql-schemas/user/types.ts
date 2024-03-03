@@ -54,7 +54,7 @@ export const UserType: GraphQLObjectType<UserSchemaType, ContextType> =
       userSubscribedTo: {
         type: new GraphQLList(UserType),
         resolve: async (parent, _args: unknown, context) => {
-          if (parent.userSubscribedTo && parent.userSubscribedTo.length) {
+          if (parent.userSubscribedTo?.length) {
             const usersIds = parent.userSubscribedTo.map((user) => user.authorId);
             const authors = context.dataloaders.userDataLoader.loadMany(usersIds);
             return authors;
@@ -66,7 +66,7 @@ export const UserType: GraphQLObjectType<UserSchemaType, ContextType> =
       subscribedToUser: {
         type: new GraphQLList(UserType),
         resolve: async (parent, _args: unknown, context) => {
-          if (parent.subscribedToUser && parent.subscribedToUser.length) {
+          if (parent.subscribedToUser?.length) {
             const usersIds = parent.subscribedToUser.map((user) => user.subscriberId);
             const subscribers = context.dataloaders.userDataLoader.loadMany(usersIds);
             return subscribers;
